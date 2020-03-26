@@ -1,0 +1,17 @@
+<article>
+    <h1>$title$</h1>
+    <section class="header">
+        <p>$date$ </p>
+        $if(tags)$
+        topics: $tags$
+        $endif$
+    </section>
+    <section>
+        $body$
+    </section>
+</article>
+<footer>
+    $if(prev)$<a href="$prev$"><-</a>$endif$
+    <a href="/">exit</a>
+    $if(next)$<a href="$next$">-></a>$endif$
+</footer>
