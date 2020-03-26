@@ -4,6 +4,7 @@ import           Data.Monoid (mappend)
 import           Data.List
 import           Control.Applicative
 import           Hakyll
+import           Hakyll.Web.Feed
 
 
 --------------------------------------------------------------------------------
@@ -51,6 +52,13 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" ctx
             >>= relativizeUrls
 
+    match "articles/*" $ do
+      route $ setExtension "html"
+      compile $ pandocCompiler
+        >>= loadAndApplyTemplate "templates/article.html" postCtx
+        >>= loadAndApplyTemplate "templates/default.html" postCtx
+        >>= relativizeUrls
+
     create ["archive.html"] $ do
         route idRoute
         compile $ do
@@ -64,6 +72,13 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
+    create ["rss.xml"] $ do
+      route idRoute
+      compile $ do
+        let feedCtx = postCtx <>
+              constField "description" "This is the post description"
+        posts <- fmap (take 10) . recentFirst =<< loadAll "posts/*"
+        renderRss myFeedConfiguration feedCtx posts
 
 
     match "index.html" $ do
@@ -84,6 +99,19 @@ main = hakyll $ do
 
 
 --------------------------------------------------------------------------------
+
+myFeedConfiguration :: FeedConfiguration
+myFeedConfiguration = FeedConfiguration
+    { feedTitle       = "moderan.org"
+    , feedDescription = "riverrun, past eve and adams"
+    , feedAuthorName  = "Kai Gay"
+    , feedAuthorEmail = "gayk@oregonstate.edu"
+    , feedRoot        = "http://www.moderan.org"
+    }
+
+
+
+
 postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" <>
