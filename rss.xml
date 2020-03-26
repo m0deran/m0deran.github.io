@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>moderan.org</title>
+        <link>http://www.moderan.org</link>
+        <description><![CDATA[riverrun, past eve and adams]]></description>
+        <atom:link href="http://www.moderan.org/rss.xml" rel="self"
+                   type="application/rss+xml" />
+        <lastBuildDate>Sun, 22 Mar 2020 00:00:00 UT</lastBuildDate>
+        <item>
+    <title>setting up</title>
+    <link>http://www.moderan.org/posts/2020-03-22-setting-up.html</link>
+    <description><![CDATA[This is the post description]]></description>
+    <pubDate>Sun, 22 Mar 2020 00:00:00 UT</pubDate>
+    <guid>http://www.moderan.org/posts/2020-03-22-setting-up.html</guid>
+    <dc:creator>Kai Gay</dc:creator>
+</item>
+<item>
+    <title>hello world</title>
+    <link>http://www.moderan.org/posts/2020-03-22-hello-world.html</link>
+    <description><![CDATA[This is the post description]]></description>
+    <pubDate>Sun, 22 Mar 2020 00:00:00 UT</pubDate>
+    <guid>http://www.moderan.org/posts/2020-03-22-hello-world.html</guid>
+    <dc:creator>Kai Gay</dc:creator>
+</item>
+
+    </channel>
+</rss>
